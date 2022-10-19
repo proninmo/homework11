@@ -4,11 +4,11 @@ ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #Install maven
-RUN apt Install maven -y
+RUN apt install maven -y
 ENV PATH=$PATH:/usr/bin
 
 #Install Docker
-RUN apt Install docker.io -y
+RUN apt install docker.io -y
 
 # Clear cache
 RUN apt-get clean
