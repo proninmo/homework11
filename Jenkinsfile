@@ -1,18 +1,25 @@
 pipeline {
-    agent any
-    tools {
-        maven "m3"
+    agent {
+        docker {
+            image 'proninmo/appbuilder'
+        }
     }
 
     stages {
-        stage ('Git Clone') {
+        stage ('Git Clone App file') {
             steps {
                 git 'https://github.com/proninmo/boxfuse-test.git'
             }
         }
-        stage ('Buld') {
+        stage ('Buld war') {
             steps {
+                sh 'cd boxfuse-*'
                 sh 'mvn package'
+            }           
+        }
+        stage ('Make imagefile with app') {
+            steps {
+
             }
         }
         stage ('Deploy') {
